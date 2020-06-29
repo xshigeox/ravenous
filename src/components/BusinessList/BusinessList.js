@@ -3,16 +3,10 @@ import "./BusinessList.css"
 import Business from "../Business/Business"
 
 const BusinessList = (props) => {
-  return (
-    <div className="BusinessList">
-      <Business />
-      <Business />
-      <Business />
-      <Business />
-      <Business />
-      <Business />
-    </div>
-  )
+  const businesses = props.businesses.map((business) => {
+    return <Business key={business.name} business={business} />
+  })
+  return <div className="BusinessList">{businesses}</div>
 }
 
 export default BusinessList
