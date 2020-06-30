@@ -25,7 +25,6 @@ const SearchBar = (props) => {
   const handleSortByChange = (event) => {
     event.preventDefault()
     setSearch({ ...search, sortBy: event.currentTarget.id })
-    console.log(event.currentTarget.id)
   }
 
   const handleTermChange = (event) => {
@@ -54,6 +53,11 @@ const SearchBar = (props) => {
     })
   }
 
+  const handleSearch = (event) => {
+    event.preventDefault()
+    props.searchYelp(search.term, search.location, search.sortBy)
+  }
+
   return (
     <div className="SearchBar">
       <div className="SearchBar-sort-options">
@@ -64,7 +68,7 @@ const SearchBar = (props) => {
         <input placeholder="Where?" onChange={handleLocationChange} />
       </div>
       <div className="SearchBar-submit">
-        <a>Let's Go</a>
+        <a onClick={handleSearch}>Let's Go</a>
       </div>
     </div>
   )
